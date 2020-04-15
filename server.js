@@ -3,6 +3,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const morgan = require('morgan');
 const path = require('path');
+const config = require('./DB.js');
 
 const app = express();
 const PORT = process.env.PORT || 8080; // Step 1
@@ -10,7 +11,7 @@ const PORT = process.env.PORT || 8080; // Step 1
 const routes = require('./routes/api');
 
 // Step 2
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/mern_youtube', {
+mongoose.connect(process.env.MONGODB_URI || config.DB, {
     useNewUrlParser: true,
     useUnifiedTopology: true
 });
